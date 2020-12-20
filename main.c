@@ -366,11 +366,45 @@ static void consecutiveSums(void)
 }
 
 
+//=== RED OR GREEN ? ===========================================================
+
+static void redOrGreen(void)
+{
+    int red = 0;
+    int green = 0;
+    int blue = 0;
+    for (int x = -10; x <= 10; ++x)
+    {
+        printf("x = %d: ", x);
+        if (x > (6 - (x * x)))
+        {
+            if ((x * x) < (3 - (2 * x)))
+            {
+                printf("RED\n");
+                ++red;
+            }
+            else
+            {
+                printf("GREEN\n");
+                ++green;
+            }
+        }
+        else
+        {
+            printf("BLUE\n");
+            ++blue;
+        }
+    }
+
+    printf("red = %d\ngreen = %d\nblue = %d\n", red, green, blue);
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    consecutiveSums();
+    redOrGreen();
     return 0;
 }
 
