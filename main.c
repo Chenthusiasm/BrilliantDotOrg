@@ -400,11 +400,72 @@ static void redOrGreen(void)
 }
 
 
+//=== A BUS TRIP ===============================================================
+
+/// 1/1/2021
+/// Kamila, Lily, Miriam, Naomi, and Odette are sitting on a bus right behind
+/// one another, with no empty seats or other passengers in between.
+/// 1. Naomi is closer to the front than Lily.
+/// 2. Odette is sitting between Lily and Kamila.
+/// 3. There are exactly two seats between Kamila and Miriam.
+/// Which girl might be closest to the front of the bus?
+
+#define ABT_SIZE                        (5u)
+
+static bool aBusTripCondition1(int l, int n)
+{
+    return (n < l);
+}
+
+
+static bool aBusTripCondition2(int k, int l, int o)
+{
+    return ((((k + 1) == o) && ((o + 1) == l)) ||
+        (((l + 1) == o) && ((o + 1) == k)));
+}
+
+static bool aBusTripCondition3(int k, int m)
+{
+    return (abs(k - m) == 3);
+}
+
+static void aBusTrip(void)
+{
+    for (int k = 0; k < ABT_SIZE; ++k)
+    {
+        for (int l = 0; l < ABT_SIZE; ++l)
+        {
+            if (l == k)
+                continue;
+            for (int m = 0; m < ABT_SIZE; ++m)
+            {
+                if ((m == k) || (m == l))
+                    continue;
+                for (int n = 0; n < ABT_SIZE; ++n)
+                {
+                    if ((n == k) || (n == l) || (n == m))
+                        continue;
+                    for (int o = 0; o < ABT_SIZE; ++o)
+                    {
+                        if ((o == k) || (o == l) || (o == m) || (o == n))
+                            continue;
+
+                        if (aBusTripCondition1(l, n) &&
+                            aBusTripCondition2(k, l, o) &&
+                            aBusTripCondition3(k, m))
+                            printf("k=%d l=%d m=%d n=%d o=%d\n", k, l, m, n, o);
+                    }
+                }
+            }
+        }
+    }
+}
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    redOrGreen();
+    aBusTrip();
     return 0;
 }
 
