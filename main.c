@@ -461,11 +461,45 @@ static void aBusTrip(void)
     }
 }
 
+//=== POLYGONS IN A ROW ========================================================
+
+/// There are xx regular polygons, all with nn sides of length 1, arranged in a
+/// row as the triangles, squares, and pentagons are in the image below.
+/// Which of the following expressions gives the perimeter of the resulting
+/// shape?
+
+
+int polygonsInARow(int x, int n)
+{
+    return (((n - 2) * x) + 2);
+}
+
+
+int polygonsInARowDebug(int x, int n)
+{
+    int perimeter = polygonsInARow(x, n);
+    printf("polygonsInARow: x = %d, n = %d, perimeter = %d\n", x, n, perimeter);
+}
+
+
+void testPolygonsInARow(void)
+{
+    // 12 triangles
+    polygonsInARowDebug(12, 3);
+
+    // 7 squares
+    polygonsInARowDebug(7, 4);
+
+    // 6 pentagons
+    polygonsInARowDebug(6, 5);
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    aBusTrip();
+    testPolygonsInARow();
     return 0;
 }
 
