@@ -495,11 +495,69 @@ void testPolygonsInARow(void)
 }
 
 
+//=== HIDDEN TRIANGES ==========================================================
+
+/// Focusing on the two triangular numbers may help you solve this Grid Fill
+/// puzzle.
+/// How many solutions does the puzzle have?
+
+///  a  b  c  6
+///  d  e  f  9
+///  g  h  i 12
+///  0  j  0
+///  9 10 11
+
+
+bool isHiddenTrianglesValid(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j)
+{
+    return (((a + b + c) == 6) &&
+            ((d + e + f) == 9) &&
+            ((g + h + i) == 12) &&
+            ((a + d + g) == 9) &&
+            ((b + e + h + j) == 10) &&
+            ((c + f + i) == 11));
+}
+
+
+void hiddenTrianglesHelper(int* val, int valLength, int offset, int* in, int inLength)
+{
+    if (offset >= valLength)
+    {
+        if (isHiddenTrianglesValid(val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9]))
+            printf("a = %d, b = %d, c = %d, d = %d, e = %d, f = %d, g = %d, h = %d, i = %d, j = %d\n",
+            val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9]);
+    }
+    else
+    {
+        for (val[offset] = 1; val[offset] < inLength; ++val[offset])
+        {
+            if (in[val[offset]] <= 0)
+                continue;
+            in[val[offset]]--;
+            hiddenTrianglesHelper(val, valLength, offset + 1, in, inLength);
+            in[val[offset]]++;
+        }
+    }
+}
+
+
+void hiddenTriangles(void)
+{
+    int in[] = { 0, 1, 2, 3, 4 };
+    int inLength = sizeof(in) / sizeof(int);
+    int val[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    int valLength = sizeof(val) / sizeof(int);
+
+    hiddenTrianglesHelper(val, valLength, 0, in, inLength);
+    printf("finished hiddenTriangles\n");
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    testPolygonsInARow();
+    hiddenTriangles();
     return 0;
 }
 
