@@ -13,6 +13,21 @@
 
 //=== DEFINES ==================================================================
 
+
+//=== PRIVATE FUNCTIONS ========================================================
+
+/// Print a 1-D array.
+static void printArray(int* array, int length)
+{
+    printf("[ ");
+    for (int i = 0; i < length; ++i)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("]\n");
+}
+
+
 //=== PROBLEMS =================================================================
 
 /// 11/14/2020:
@@ -508,14 +523,14 @@ void testPolygonsInARow(void)
 ///  9 10 11
 
 
-bool isHiddenTrianglesValid(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j)
+bool isHiddenTrianglesValid(int* val, int valLength)
 {
-    return (((a + b + c) == 6) &&
-            ((d + e + f) == 9) &&
-            ((g + h + i) == 12) &&
-            ((a + d + g) == 9) &&
-            ((b + e + h + j) == 10) &&
-            ((c + f + i) == 11));
+    return (((val[0] + val[1] + val[2]) == 6) &&
+            ((val[3] + val[4] + val[5]) == 9) &&
+            ((val[6] + val[7] + val[8]) == 12) &&
+            ((val[0] + val[3] + val[6]) == 9) &&
+            ((val[1] + val[4] + val[7] + val[9]) == 10) &&
+            ((val[2] + val[5] + val[8]) == 11));
 }
 
 
@@ -523,9 +538,8 @@ void hiddenTrianglesHelper(int* val, int valLength, int offset, int* in, int inL
 {
     if (offset >= valLength)
     {
-        if (isHiddenTrianglesValid(val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9]))
-            printf("a = %d, b = %d, c = %d, d = %d, e = %d, f = %d, g = %d, h = %d, i = %d, j = %d\n",
-            val[0], val[1], val[2], val[3], val[4], val[5], val[6], val[7], val[8], val[9]);
+            if (isHiddenTrianglesValid(val, valLength))
+                printArray(val, valLength);
     }
     else
     {
