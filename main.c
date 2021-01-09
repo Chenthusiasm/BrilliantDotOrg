@@ -523,7 +523,7 @@ void testPolygonsInARow(void)
 ///  9 10 11
 
 
-bool isHiddenTrianglesValid(int* val, int valLength)
+static bool isHiddenTrianglesValid(int* val, int valLength)
 {
     return (((val[0] + val[1] + val[2]) == 6) &&
             ((val[3] + val[4] + val[5]) == 9) &&
@@ -534,12 +534,12 @@ bool isHiddenTrianglesValid(int* val, int valLength)
 }
 
 
-void hiddenTrianglesHelper(int* val, int valLength, int offset, int* in, int inLength)
+static void hiddenTrianglesHelper(int* val, int valLength, int offset, int* in, int inLength)
 {
     if (offset >= valLength)
     {
-            if (isHiddenTrianglesValid(val, valLength))
-                printArray(val, valLength);
+        if (isHiddenTrianglesValid(val, valLength))
+            printArray(val, valLength);
     }
     else
     {
