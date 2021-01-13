@@ -579,9 +579,55 @@ void hiddenTriangles(void)
 /// by analyzing the various cases.
 
 
+bool thisCryptogramRhymesCheck(int* val, int valLength)
+{
+    int a = val[0];
+    int b = val[1];
+    int h = val[2];
+    int l = val[3];
+    int p = val[4];
+
+    int bla = 100 * b + 10 * l + a;
+    int ba = 10 * b + a;
+    int alpha = 10000 * a + 1000 * l + 100 * p + 10 * h + a;
+
+    return ((bla * ba) == alpha);
+}
+
+
+void thisCryptogramRhymesSelector(int* val, int valLength, int offset, bool* used, int usedLength)
+{
+    if (offset >= valLength)
+    {
+        if (thisCryptogramRhymesCheck(val, valLength))
+            printArray(val, valLength);
+    }
+    else
+    {
+        for (val[offset] = 0; val[offset] < usedLength; ++val[offset])
+        {
+            if (used[val[offset]])
+                continue;
+            used[val[offset]] = true;
+            thisCryptogramRhymesSelector(val, valLength, offset + 1, used, usedLength);
+            used[val[offset]] = false;
+        }
+    }
+}
+
 void thisCryptogramRhymes(void)
 {
-
+    bool used[] = { false, false, false, false, false, false, false, false, false, false };
+    int usedLength = sizeof(used) / sizeof(bool);
+    // [0]: A
+    // [1]: B
+    // [2]: H
+    // [3]: L
+    // [4]: P
+    int val[] = { 0, 0, 0, 0, 0 };
+    int valLength = sizeof(val) / sizeof(int);
+    thisCryptogramRhymesSelector(val, valLength, 0, used, usedLength);
+    printf("finished thisCryptogramRhymes");
 }
 
 
