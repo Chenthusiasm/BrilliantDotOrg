@@ -567,11 +567,29 @@ void hiddenTriangles(void)
 }
 
 
+//=== THIS CRYPTOGRAM RHYMES ===================================================
+
+///       B L A
+/// x       B A
+/// -----------
+///   A L P H A
+/// Given that every letter corresponds to a different digit, what is the value
+/// of H?
+/// Hint: If you narrow down the values of A and B, you can get to the solution
+/// by analyzing the various cases.
+
+
+void thisCryptogramRhymes(void)
+{
+
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    hiddenTriangles();
+    thisCryptogramRhymes();
     return 0;
 }
 
