@@ -631,11 +631,50 @@ void thisCryptogramRhymes(void)
 }
 
 
+//=== WHAT IS IMPOSSIBLE =======================================================
+
+/// Which of the following numbers can't you get by changing some of the + to -?
+/// 1 + 2 + 3 + 4 = 10
+
+
+void whatIsImpossibleHelper(bool* isMinus, int isMinusLength, int offset)
+{
+    if (offset >= isMinusLength)
+    {
+        int n = 1;
+        n += (isMinus[0] ? (-1) : (1)) * 2;
+        n += (isMinus[1] ? (-1) : (1)) * 3;
+        n += (isMinus[2] ? (-1) : (1)) * 4;
+        printf("1 %c 2 %c 3 %c 4 = %d\n",
+            isMinus[0] ? '-' : '+',
+            isMinus[1] ? '-' : '+',
+            isMinus[2] ? '-' : '+',
+            n
+        );
+    }
+    else
+    {
+        isMinus[offset] = false;
+        whatIsImpossibleHelper(isMinus, isMinusLength, offset + 1);
+        isMinus[offset] = true;
+        whatIsImpossibleHelper(isMinus, isMinusLength, offset + 1);
+    }
+}
+
+
+void whatIsImpossible(void)
+{
+    bool isMinus[] = { false, false, false };
+    int isMinusLength = sizeof(isMinus) / sizeof(bool);
+    whatIsImpossibleHelper(isMinus, isMinusLength, 0);
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    thisCryptogramRhymes();
+    whatIsImpossible();
     return 0;
 }
 
