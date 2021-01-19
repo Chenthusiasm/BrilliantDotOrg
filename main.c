@@ -670,6 +670,22 @@ void whatIsImpossible(void)
 }
 
 
+//=== SENIOR PRANK =============================================================
+
+/// At a university, the portraits of its 5050 presidents line a hallway of the
+/// student center. Every year, 5050 students pull the following prank:
+/// 1.  The first student covers every portrait in yellow paint.
+/// 2.  The second student paints over every second portrait in blue paint.
+/// 3.  The third student goes to every third portrait and paints over it in the
+///     opposite color — the yellow portraits get painted blue and the blue
+///     portraits get painted yellow.
+/// 4.  The fourth student goes to every fourth portrait and paints over it in
+///     the opposite color.
+/// 5.  This pattern continues through the fiftieth student.
+/// After all 5050 students have finished, which of the following presidents'
+/// portraits is painted yellow?
+
+
 //=== MAIN =====================================================================
 
 int main(void)
