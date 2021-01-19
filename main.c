@@ -710,6 +710,9 @@ void seniorPrank(void)
                 else if (portraits[j] == SP_BLUE)
                     portraits[j] = SP_YELLOW;
             }
+
+            //if (j == 35)
+            //    printf("[%d:%d]: %c\n", s, p, portraits[j]);
         }
     }
     for (int i = 0; i < SP_NUM_PORTRAITS; ++i)
