@@ -685,12 +685,43 @@ void whatIsImpossible(void)
 /// After all 5050 students have finished, which of the following presidents'
 /// portraits is painted yellow?
 
+#define SP_NUM_PORTRAITS                (50U)
+#define SP_YELLOW                       ('Y')
+#define SP_BLUE                         ('B')
+
+void seniorPrank(void)
+{
+    char portraits[SP_NUM_PORTRAITS];
+
+    // First student colors everything yello.
+    for (int i = 0; i < SP_NUM_PORTRAITS; ++i)
+        portraits[i] = SP_YELLOW;
+
+    for (int i = 1; i < SP_NUM_PORTRAITS; ++i)
+    {
+        for (int j = 0; j < SP_NUM_PORTRAITS; ++j)
+        {
+            int s = i + 1;
+            int p = j + 1;
+            if ((p % s) == 0)
+            {
+                if (portraits[j] == SP_YELLOW)
+                    portraits[j] = SP_BLUE;
+                else if (portraits[j] == SP_BLUE)
+                    portraits[j] = SP_YELLOW;
+            }
+        }
+    }
+    for (int i = 0; i < SP_NUM_PORTRAITS; ++i)
+        printf("[%d]: %c\n", i + 1, portraits[i]);
+}
+
 
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    whatIsImpossible();
+    seniorPrank();
     return 0;
 }
 
