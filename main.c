@@ -725,12 +725,12 @@ void seniorPrank(void)
 void mysteriousAge(void)
 {
     printf("myseriousAge:\n");
-    for (int a = 0; a <= 100; ++a)
+    for (int a = 0; a <= 100000; ++a)
     {
         int b = (4 * ((a / 10) * (a % 10))) + 1;
-        printf("a = %d, b = %d\n", a, b);
-        // if (a == b)
-        //     printf("age = %d\n", a);
+        //printf("a = %d, b = %d\n", a, b);
+        if (a == b)
+            printf("age = %d\n", a);
     }
 }
 
