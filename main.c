@@ -720,11 +720,26 @@ void seniorPrank(void)
 }
 
 
+//=== THE MYSTERIOUS AGE =======================================================
+
+void mysteriousAge(void)
+{
+    printf("myseriousAge:\n");
+    for (int a = 0; a <= 100; ++a)
+    {
+        int b = (4 * ((a / 10) * (a % 10))) + 1;
+        printf("a = %d, b = %d\n", a, b);
+        // if (a == b)
+        //     printf("age = %d\n", a);
+    }
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    seniorPrank();
+    mysteriousAge();
     return 0;
 }
 
