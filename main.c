@@ -738,8 +738,14 @@ void mysteriousAge(void)
 //=== MAKING NECKLACES =========================================================
 
 #define MK_SIZE                 (6u)
+#define MK_PERM_COUNT           (64u)
 
-void makingNecklacesHelper(bool beads[], int beadsLength, int offset)
+void checkNecklace(bool beads[], int beadsLength, bool isSet[], int isSetLength)
+{
+    
+}
+
+void makingNecklacesHelper(bool beads[], int beadsLength, int offset, bool isSet[], int isSetLength)
 {
     if (offset >= beadsLength)
     {
@@ -753,9 +759,9 @@ void makingNecklacesHelper(bool beads[], int beadsLength, int offset)
     else
     {
         beads[offset] = false;
-        makingNecklacesHelper(beads, beadsLength, offset + 1);
+        makingNecklacesHelper(beads, beadsLength, offset + 1, isSet, isSetLength);
         beads[offset] = true;
-        makingNecklacesHelper(beads, beadsLength, offset + 1);
+        makingNecklacesHelper(beads, beadsLength, offset + 1, isSet, isSetLength);
         beads[offset] = false;
     }
 }
@@ -764,8 +770,12 @@ void makingNecklacesHelper(bool beads[], int beadsLength, int offset)
 void makingNecklaces(void)
 {
     bool isGold[MK_SIZE] = { false };
+    bool isSet[MK_PERM_COUNT] = { false };
 
-    makingNecklacesHelper(isGold, MK_SIZE, 0);
+    memset(isGold, 0, sizeof(isGold));
+    memset(isSet, 0, sizeof(isSet));
+
+    makingNecklacesHelper(isGold, MK_SIZE, 0, isSet, MK_PERM_COUNT);
 }
 
 
