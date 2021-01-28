@@ -740,29 +740,53 @@ void mysteriousAge(void)
 #define MK_SIZE                 (6u)
 #define MK_PERM_COUNT           (64u)
 
-void checkNecklace(bool beads[], int beadsLength, bool isSet[], int isSetLength)
+bool checkNecklace(bool beads[], int beadsLength, bool isSet[], int isSetLength)
 {
-    
+    bool status = true;
+
+    for (int i = 0; i < beadsLength; ++i)
+    {
+        int total = 0;
+        for (int j = 0; j < beadsLength; ++j)
+        {
+            int offset = (i + j) % beadsLength;
+            int v = (beads[offset]) ? (1) : (0);
+            total += v << j;
+        }
+        if (isSet[total])
+            status = false;
+        isSet[total] = true;
+    }
+
+    return status;
 }
 
-void makingNecklacesHelper(bool beads[], int beadsLength, int offset, bool isSet[], int isSetLength)
+
+int makingNecklacesHelper(bool beads[], int beadsLength, int offset, bool isSet[], int isSetLength)
 {
     if (offset >= beadsLength)
     {
-        printf("[ ");
-        for (int i = 0; i < beadsLength; ++i)
+        if (checkNecklace(beads, beadsLength, isSet, isSetLength))
         {
-            printf("%d, ", beads[i]);
+            printf("[ ");
+            for (int i = 0; i < beadsLength; ++i)
+            {
+                printf("%d, ", beads[i]);
+            }
+            printf("]\n");
+            return 1;
         }
-        printf("]\n");
+        else
+            return 0;
     }
     else
     {
         beads[offset] = false;
-        makingNecklacesHelper(beads, beadsLength, offset + 1, isSet, isSetLength);
+        int a = makingNecklacesHelper(beads, beadsLength, offset + 1, isSet, isSetLength);
         beads[offset] = true;
-        makingNecklacesHelper(beads, beadsLength, offset + 1, isSet, isSetLength);
+        int b = makingNecklacesHelper(beads, beadsLength, offset + 1, isSet, isSetLength);
         beads[offset] = false;
+        return a + b;
     }
 }
 
@@ -775,7 +799,8 @@ void makingNecklaces(void)
     memset(isGold, 0, sizeof(isGold));
     memset(isSet, 0, sizeof(isSet));
 
-    makingNecklacesHelper(isGold, MK_SIZE, 0, isSet, MK_PERM_COUNT);
+    int count = makingNecklacesHelper(isGold, MK_SIZE, 0, isSet, MK_PERM_COUNT);
+    printf("makingNecklaces = %d\n", count);
 }
 
 
