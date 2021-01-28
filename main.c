@@ -735,11 +735,45 @@ void mysteriousAge(void)
 }
 
 
+//=== MAKING NECKLACES =========================================================
+
+#define MK_SIZE                 (6u)
+
+void makingNecklacesHelper(bool beads[], int beadsLength, int offset)
+{
+    if (offset >= beadsLength)
+    {
+        printf("[ ");
+        for (int i = 0; i < beadsLength; ++i)
+        {
+            printf("%d, ", beads[i]);
+        }
+        printf("]\n");
+    }
+    else
+    {
+        beads[offset] = false;
+        makingNecklacesHelper(beads, beadsLength, offset + 1);
+        beads[offset] = true;
+        makingNecklacesHelper(beads, beadsLength, offset + 1);
+        beads[offset] = false;
+    }
+}
+
+
+void makingNecklaces(void)
+{
+    bool isGold[MK_SIZE] = { false };
+
+    makingNecklacesHelper(isGold, MK_SIZE, 0);
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    mysteriousAge();
+    makingNecklaces();
     return 0;
 }
 
