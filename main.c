@@ -804,11 +804,25 @@ void makingNecklaces(void)
 }
 
 
+//=== CHERRY PRODUCTION ========================================================
+///     A P P L E
+/// +     P E A R
+/// -------------
+///   C H E R R Y
+/// If every letter corresponds to a different digit and E=5,E=5, what is Y?
+
+
+void cherryProduction(void)
+{
+    printf("cherryProduction:\n");
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    makingNecklaces();
+    cherryProduction();
     return 0;
 }
 
