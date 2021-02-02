@@ -811,10 +811,104 @@ void makingNecklaces(void)
 ///   C H E R R Y
 /// If every letter corresponds to a different digit and E=5,E=5, what is Y?
 
+/// 0 1 2 3 4 5 6
+/// A C H L P R Y
+/// E = 5
+
+/// A: [0]
+/// P: [4]
+/// P: [4]
+/// L: [3]
+/// E: 5
+
+/// P: [4]
+/// E: 5
+/// A: [0]
+/// R: [5]
+
+/// C: [1]
+/// H: [2]
+/// E: 5
+/// R: [5]
+/// R: [5]
+/// Y: [6]
+
+void checkCherryProduction(int vals[], size_t length)
+{
+    bool status = true;
+    int const e = 5;
+    int const iA = 0;
+    int const iC = 1;
+    int const iH = 2;
+    int const iL = 3;
+    int const iP = 4;
+    int const iR = 5;
+    int const iY = 6;
+    for (size_t i = 0; status && (i < length); ++i)
+    {
+        if (vals[i] == e)
+            status = false;
+        for (size_t j = i + 1; status && (j < length); ++j)
+        {
+            status = status && (vals[i] != vals[j]);
+        }
+    }
+    if (status)
+    {
+        int apple = 10000 * vals[iA] +
+                     1000 * vals[iP] +
+                      100 * vals[iP] +
+                       10 * vals[iL] +
+                        1 * e;
+
+        int pear = 1000 * vals[iP] +
+                    100 * e +
+                     10 * vals[iA] +
+                      1 * vals[iR];
+
+        int cherry = 100000 * vals[iC] +
+                      10000 * vals[iH] +
+                       1000 * e +
+                        100 * vals[iR] +
+                         10 * vals[iR] +
+                          1 * vals[iY];
+        
+        status = status && (cherry == (apple + pear));
+    }
+
+    if (status)
+    {
+        printf("A = %d]n", vals[iA]);
+        printf("C = %d]n", vals[iC]);
+        printf("E = %d]n", e);
+        printf("H = %d]n", vals[iH]);
+        printf("L = %d]n", vals[iL]);
+        printf("P = %d]n", vals[iP]);
+        printf("R = %d]n", vals[iR]);
+        printf("Y = %d]n", vals[iY]);
+    }
+}
+
+
+void cherryProductionHelper(int vals[], size_t length, int offset)
+{
+    if (offset >= length)
+        checkCherryProduction(vals, length);
+
+    for (size_t i = 0; i < 10; ++i)
+    {
+        vals[offset] = i;
+        cherryProductionHelper(vals, length, offset+ 1);
+    }
+}
+
+#define CP_LENGTH                       (7u)
 
 void cherryProduction(void)
 {
+    int vals[CP_LENGTH] = { 0 };
     printf("cherryProduction:\n");
+    cherryProductionHelper(vals, CP_LENGTH, 0);
 }
 
 
