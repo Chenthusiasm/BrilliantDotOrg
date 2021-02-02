@@ -835,7 +835,6 @@ void makingNecklaces(void)
 
 void checkCherryProduction(int vals[], size_t length)
 {
-    bool status = true;
     int const e = 5;
     int const iA = 0;
     int const iC = 1;
@@ -844,6 +843,11 @@ void checkCherryProduction(int vals[], size_t length)
     int const iP = 4;
     int const iR = 5;
     int const iY = 6;
+
+    bool status = true;
+
+    //printArray(vals, length);
+
     for (size_t i = 0; status && (i < length); ++i)
     {
         if (vals[i] == e)
@@ -872,20 +876,20 @@ void checkCherryProduction(int vals[], size_t length)
                         100 * vals[iR] +
                          10 * vals[iR] +
                           1 * vals[iY];
-        
+        //printf("\tapple + pear = cherry    ->    %d + %d = %d\n", apple, pear, cherry);
         status = status && (cherry == (apple + pear));
     }
 
     if (status)
     {
-        printf("A = %d]n", vals[iA]);
-        printf("C = %d]n", vals[iC]);
-        printf("E = %d]n", e);
-        printf("H = %d]n", vals[iH]);
-        printf("L = %d]n", vals[iL]);
-        printf("P = %d]n", vals[iP]);
-        printf("R = %d]n", vals[iR]);
-        printf("Y = %d]n", vals[iY]);
+        printf("A = %d\n", vals[iA]);
+        printf("C = %d\n", vals[iC]);
+        printf("E = %d\n", e);
+        printf("H = %d\n", vals[iH]);
+        printf("L = %d\n", vals[iL]);
+        printf("P = %d\n", vals[iP]);
+        printf("R = %d\n", vals[iR]);
+        printf("Y = %d\n", vals[iY]);
     }
 }
 
@@ -894,11 +898,13 @@ void cherryProductionHelper(int vals[], size_t length, int offset)
 {
     if (offset >= length)
         checkCherryProduction(vals, length);
-
-    for (size_t i = 0; i < 10; ++i)
+    else
     {
-        vals[offset] = i;
-        cherryProductionHelper(vals, length, offset+ 1);
+        for (size_t i = 0; i < 10; ++i)
+        {
+            vals[offset] = i;
+            cherryProductionHelper(vals, length, offset + 1);
+        }    
     }
 }
 
