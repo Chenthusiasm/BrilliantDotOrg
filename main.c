@@ -918,11 +918,49 @@ void cherryProduction(void)
 }
 
 
+//=== OPPORTUNITIES IN 2021 ====================================================
+
+void oppChecker(int* year, size_t yearLength)
+{
+    if (year[0] != 0)
+        printArray(year, yearLength);
+}
+
+
+void oppHelper(int* year, size_t yearLength, size_t offset, int* input, size_t inputLength)
+{
+    if (offset >= yearLength)
+        oppChecker(year, yearLength);
+    else
+    {
+        for (size_t i = 0; i < inputLength; ++i)
+        {
+            if (input[i] > 0)
+            {
+                input[i]--;
+                year[offset] = i;
+                oppHelper(year, yearLength, offset + 1, input, inputLength);
+                input[i]++;
+            }
+        }
+    }
+}
+
+#define OPP_YEAR_LENGTH                 (4u)
+#define OPP_INPUT_LENGTH                (3u)
+void opp2021(void)
+{
+    int year[OPP_YEAR_LENGTH] = { 0 };
+    int input[OPP_INPUT_LENGTH] = { 1, 1, 2 };
+    oppHelper(year, OPP_YEAR_LENGTH, 0, input, OPP_INPUT_LENGTH);
+}
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    cherryProduction();
+    opp2021();
     return 0;
 }
 
