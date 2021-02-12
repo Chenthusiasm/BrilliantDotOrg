@@ -973,8 +973,8 @@ static double plusHelper(int n, double length)
         return 0.0;
     else
     {
-        double area = (length / 3) * (length / 3);
-        area += 4 * plusHelper(n - 1, length / 3);
+        double area = 2 * (length / 3) * (length / 3);
+        area += 3 * plusHelper(n - 1, length / 3);
         return area;
     }
 }
@@ -982,8 +982,10 @@ static double plusHelper(int n, double length)
 
 static void plusFractal(void)
 {
-    int n = 10;
-    double area = plusHelper(n, 1.0);
+    int n = 30;
+    double length = (1.0 / 3.0);
+    double area = length * length;
+    area += 4.0 * plusHelper(n, length);
     printf("plus: n = %d, area = %f\n", n, area);
 }
 
