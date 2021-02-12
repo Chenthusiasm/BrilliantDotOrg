@@ -956,11 +956,44 @@ void opp2021(void)
 }
 
 
+//=== PLUS OR NONPLUSSED =======================================================
+
+/// Within the outlined square below, 55 smaller, shaded squares are arranged in
+/// a plus sign. We create a fractal pattern by recursively repeating this
+/// procedure:
+/// For each shaded square that has exactly one of its sides bordering another
+/// shaded region, replace it with a scaled-down version of the original plus
+/// sign.
+/// After infinitely many iterations, what fraction of the outlined square's
+/// area is shaded?
+
+static double plusHelper(int n, double length)
+{
+    if (n == 0)
+        return 0.0;
+    else
+    {
+        double area = (length / 3) * (length / 3);
+        area += 4 * plusHelper(n - 1, length / 3);
+        return area;
+    }
+}
+
+
+static void plusFractal(void)
+{
+    int n = 10;
+    double area = plusHelper(n, 1.0);
+    printf("plus: n = %d, area = %f\n", n, area);
+}
+
+
+
 //=== MAIN =====================================================================
 
 int main(void)
 {
-    opp2021();
+    plusFractal();
     return 0;
 }
 
