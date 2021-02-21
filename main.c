@@ -1,7 +1,7 @@
 /// Main file for problems solved on https://brilliant.org.
 
 
-//=== INCLUDES =================================================================
+// === INCLUDES ================================================================
 
 #include <limits.h>
 #include <stdbool.h>
@@ -11,10 +11,10 @@
 #include <string.h>
 
 
-//=== DEFINES ==================================================================
+// === DEFINES =================================================================
 
 
-//=== PRIVATE FUNCTIONS ========================================================
+// === PRIVATE FUNCTIONS =======================================================
 
 /// Print a 1-D array.
 static void printArray(int* array, int length)
@@ -28,7 +28,7 @@ static void printArray(int* array, int length)
 }
 
 
-//=== PROBLEMS =================================================================
+// === PROBLEMS ================================================================
 
 /// 11/14/2020:
 ///     L O V E
@@ -83,7 +83,7 @@ static void loveSolve(void)
 }
 
 
-//=== THE LOST TIME ============================================================
+// === THE LOST TIME ===========================================================
 
 /// 11/28/2020:
 /// English:    2nd, 4th
@@ -146,7 +146,7 @@ static void lostTimeSolve(void)
 }
 
 
-//=== SUBTRACT THE SQUARES =====================================================
+// === SUBTRACT THE SQUARES ====================================================
 
 /// 11/29/2020:
 /// Initial: x = A
@@ -213,7 +213,7 @@ static void subtractTheSquares(void)
 }
 
 
-//=== NUMBERS IN HEXAGON =======================================================
+// === NUMBERS IN HEXAGON ======================================================
 
 /// In the following puzzle, dashed arrows denote addition, while solid arrows
 /// denote multiplication. If all the circles must contain different positive
@@ -266,7 +266,7 @@ static void numbersInHexagon(void)
 }
 
 
-//=== CONSECUTIVE SUMS =========================================================
+// === CONSECUTIVE SUMS ========================================================
 
 /// _ _ X X _ _ 12
 /// _ X _ _ X _ 13
@@ -381,7 +381,7 @@ static void consecutiveSums(void)
 }
 
 
-//=== RED OR GREEN ? ===========================================================
+// === RED OR GREEN ? ==========================================================
 
 static void redOrGreen(void)
 {
@@ -415,7 +415,7 @@ static void redOrGreen(void)
 }
 
 
-//=== A BUS TRIP ===============================================================
+// === A BUS TRIP ==============================================================
 
 /// 1/1/2021
 /// Kamila, Lily, Miriam, Naomi, and Odette are sitting on a bus right behind
@@ -476,7 +476,7 @@ static void aBusTrip(void)
     }
 }
 
-//=== POLYGONS IN A ROW ========================================================
+// === POLYGONS IN A ROW =======================================================
 
 /// There are xx regular polygons, all with nn sides of length 1, arranged in a
 /// row as the triangles, squares, and pentagons are in the image below.
@@ -510,7 +510,7 @@ void testPolygonsInARow(void)
 }
 
 
-//=== HIDDEN TRIANGES ==========================================================
+// === HIDDEN TRIANGES =========================================================
 
 /// Focusing on the two triangular numbers may help you solve this Grid Fill
 /// puzzle.
@@ -567,7 +567,7 @@ void hiddenTriangles(void)
 }
 
 
-//=== THIS CRYPTOGRAM RHYMES ===================================================
+// === THIS CRYPTOGRAM RHYMES ==================================================
 
 ///       B L A
 /// x       B A
@@ -631,7 +631,7 @@ void thisCryptogramRhymes(void)
 }
 
 
-//=== WHAT IS IMPOSSIBLE =======================================================
+// === WHAT IS IMPOSSIBLE ======================================================
 
 /// Which of the following numbers can't you get by changing some of the + to -?
 /// 1 + 2 + 3 + 4 = 10
@@ -670,7 +670,7 @@ void whatIsImpossible(void)
 }
 
 
-//=== SENIOR PRANK =============================================================
+// === SENIOR PRANK ============================================================
 
 /// At a university, the portraits of its 5050 presidents line a hallway of the
 /// student center. Every year, 5050 students pull the following prank:
@@ -720,7 +720,7 @@ void seniorPrank(void)
 }
 
 
-//=== THE MYSTERIOUS AGE =======================================================
+// === THE MYSTERIOUS AGE ======================================================
 
 void mysteriousAge(void)
 {
@@ -735,7 +735,7 @@ void mysteriousAge(void)
 }
 
 
-//=== MAKING NECKLACES =========================================================
+// === MAKING NECKLACES ========================================================
 
 #define MK_SIZE                 (6u)
 #define MK_PERM_COUNT           (64u)
@@ -804,7 +804,7 @@ void makingNecklaces(void)
 }
 
 
-//=== CHERRY PRODUCTION ========================================================
+// === CHERRY PRODUCTION =======================================================
 ///     A P P L E
 /// +     P E A R
 /// -------------
@@ -918,7 +918,7 @@ void cherryProduction(void)
 }
 
 
-//=== OPPORTUNITIES IN 2021 ====================================================
+// === OPPORTUNITIES IN 2021 ===================================================
 
 void oppChecker(int* year, size_t yearLength)
 {
@@ -956,7 +956,7 @@ void opp2021(void)
 }
 
 
-//=== PLUS OR NONPLUSSED =======================================================
+// === PLUS OR NONPLUSSED ======================================================
 
 /// Within the outlined square below, 55 smaller, shaded squares are arranged in
 /// a plus sign. We create a fractal pattern by recursively repeating this
@@ -990,8 +990,19 @@ static void plusFractal(void)
 }
 
 
+// === RANDOM ROBOT ROAMING ====================================================
 
-//=== MAIN =====================================================================
+/// 2/20/2021
+/// The robot starts on the center dot of the grid, makes four moves of one unit
+/// with each move in a randomly selected direction (up, down, left, or right),
+/// and then stops. The robot does not move diagonally.
+/// Which region is most likely to contain the dot the robot stops on?
+/// a. The inner red square
+/// b. The blue V region
+/// c. The outer orange region
+
+
+// === MAIN ====================================================================
 
 int main(void)
 {
