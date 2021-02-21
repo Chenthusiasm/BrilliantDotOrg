@@ -1001,6 +1001,56 @@ static void plusFractal(void)
 /// b. The blue V region
 /// c. The outer orange region
 
+#define RRR_COL                         (9u)
+#define RRR_ROW                         (9u)
+#define O                               (0u)
+#define R                               (1u)
+#define B                               (2u)
+#define Y                               (3u)
+
+static uint8_t const RRRTable[RRR_ROW][RRR_COL] =
+{
+    { O, O, O, O, Y, O, O, O, O },
+    { O, O, O, Y, Y, Y, O, O, O },
+    { O, O, Y, Y, R, Y, Y, O, O },
+    { O, Y, Y, R, R, R, Y, Y, O },
+    { Y, Y, B, B, R, B, B, Y, Y },
+    { O, Y, Y, B, B, B, Y, Y, O },
+    { O, O, Y, Y, B, Y, Y, O, O },
+    { O, O, O, Y, Y, Y, O, O, O },
+    { O, O, O, O, Y, O, O, O, O },
+};
+
+static int rrrTally[] = { 0, 0, 0, 0 };
+
+static void randomRobotRoamingHelper(int step, int x, int y)
+{
+    if (step <= 0)
+    {
+        
+    }
+    else
+    {
+        randomRobotRoamingHelper(step - 1, x - 1, y);
+        randomRobotRoamingHelper(step - 1, x + 1, y);
+        randomRobotRoamingHelper(step - 1, x, y - 1);
+        randomRobotRoamingHelper(step - 1, x, y + 1);
+    }
+}
+
+static void randomRobotRoaming(void)
+{
+    randomRobotRoamingHelper(4, 4, 4);
+}
+
+
+#undef RRR_COL
+#undef RRR_ROW
+#undef O
+#undef R
+#undef B
+#undef Y
+
 
 // === MAIN ====================================================================
 
