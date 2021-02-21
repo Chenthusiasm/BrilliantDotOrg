@@ -1026,9 +1026,7 @@ static int rrrTally[] = { 0, 0, 0, 0 };
 static void randomRobotRoamingHelper(int step, int x, int y)
 {
     if (step <= 0)
-    {
-        
-    }
+        rrrTally[RRRTable[y][x]]++;
     else
     {
         randomRobotRoamingHelper(step - 1, x - 1, y);
@@ -1040,7 +1038,8 @@ static void randomRobotRoamingHelper(int step, int x, int y)
 
 static void randomRobotRoaming(void)
 {
-    randomRobotRoamingHelper(4, 4, 4);
+    randomRobotRoamingHelper(4, RRR_COL/2, RRR_ROW/2);
+    printf("randomrobotRoaming: 0=%d, r=%d, b=%d, y=%d\n", rrrTally[O], rrrTally[R], rrrTally[B], rrrTally[Y]);
 }
 
 
@@ -1056,7 +1055,7 @@ static void randomRobotRoaming(void)
 
 int main(void)
 {
-    plusFractal();
+    randomRobotRoaming();
     return 0;
 }
 
