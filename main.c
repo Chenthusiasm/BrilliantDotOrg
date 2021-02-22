@@ -1039,7 +1039,7 @@ static void randomRobotRoamingHelper(int step, int x, int y)
 static void randomRobotRoaming(void)
 {
     randomRobotRoamingHelper(4, RRR_COL/2, RRR_ROW/2);
-    printf("randomrobotRoaming: 0=%d, r=%d, b=%d, y=%d\n", rrrTally[O], rrrTally[R], rrrTally[B], rrrTally[Y]);
+    printf("randomrobotRoaming: r=%d, b=%d, y=%d\n", rrrTally[R], rrrTally[B], rrrTally[Y]);
 }
 
 
