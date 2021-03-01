@@ -1059,12 +1059,49 @@ static void randomRobotRoaming(void)
 /// (M + A + T + H)^4 = MATH
 /// Every letter corresponds to a different digit. What is M + A + T + H?
 
-static int math[] = { 0, 0, 0, 0 };
+
+static void powerOfMathChecker(int vals[], int size)
+{
+    int mathAdd = vals[0] + vals[1] + vals[2] + vals[3];
+    int mathPower4 = mathAdd * mathAdd * mathAdd * mathAdd;
+    int math = (vals[0] * 1000) + (vals[1] * 100) + (vals[2] * 10) + vals[3];
+    bool status = (math == mathPower4);
+
+    if (status)
+    {
+        for (int i = 0; i < size; ++i)
+        {
+            for (int j = i; j < size; ++j)
+                status = status && (vals[i] != vals[j]);
+        }
+    }
+
+    if (status)
+        printf("\tM = %d, A = %d, T = %d, H = %d; M + A + T + H = %d\n",
+            vals[0], vals[1], vals[2], vals[3], mathAdd);
+}
+
+
+static void powerOfMathHelper(int offset, int vals[], int size)
+{
+    if (offset >= size)
+        powerOfMathChecker(vals, size);
+    else
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            vals[offset] = i;
+            powerOfMathHelper(offset + 1, vals, size);
+        }
+    }    
+}
+
 
 static void powerOfMath(void)
 {
+    int math[] = { 0, 0, 0, 0 };
+    powerOfMathHelper(0, math, sizeof(math)/sizeof(int));
     printf("M + A + T + H)^4 = MATH\n");
-    printf("M = %d, A = %d, T = %d, H = %d\n", math[0], math[1], math[2], math[3]);
 }
 
 
