@@ -1059,12 +1059,20 @@ static void randomRobotRoaming(void)
 /// (M + A + T + H)^4 = MATH
 /// Every letter corresponds to a different digit. What is M + A + T + H?
 
+static int math[] = { 0, 0, 0, 0 };
+
+static void powerOfMath(void)
+{
+    printf("M + A + T + H)^4 = MATH\n");
+    printf("M = %d, A = %d, T = %d, H = %d\n", math[0], math[1], math[2], math[3]);
+}
+
 
 // === MAIN ====================================================================
 
 int main(void)
 {
-    randomRobotRoaming();
+    powerOfMath();
     return 0;
 }
 
