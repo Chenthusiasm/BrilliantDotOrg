@@ -1053,6 +1053,13 @@ static void randomRobotRoaming(void)
 #undef Y
 
 
+// === THE POWER OF MATH =======================================================
+
+/// 3/1/2021:
+/// (M + A + T + H)^4 = MATH
+/// Every letter corresponds to a different digit. What is M + A + T + H?
+
+
 // === MAIN ====================================================================
 
 int main(void)
