@@ -1071,7 +1071,7 @@ static void powerOfMathChecker(int vals[], int size)
     {
         for (int i = 0; i < size; ++i)
         {
-            for (int j = i; j < size; ++j)
+            for (int j = i + 1; j < size; ++j)
                 status = status && (vals[i] != vals[j]);
         }
     }
@@ -1100,8 +1100,8 @@ static void powerOfMathHelper(int offset, int vals[], int size)
 static void powerOfMath(void)
 {
     int math[] = { 0, 0, 0, 0 };
-    powerOfMathHelper(0, math, sizeof(math)/sizeof(int));
     printf("M + A + T + H)^4 = MATH\n");
+    powerOfMathHelper(0, math, sizeof(math)/sizeof(int));
 }
 
 
