@@ -1122,7 +1122,7 @@ static void howCanYouWriteIt(void)
         for (int y = 1; y < x; ++y)
         {
             if ((x*x - y*y) == v)
-                printf("%d * %d = %d\n", x, y, v);
+                printf("%d^2 - %d^2 = %d\n", x, y, v);
         }
     }
 }
@@ -1132,7 +1132,7 @@ static void howCanYouWriteIt(void)
 
 int main(void)
 {
-    powerOfMath();
+    howCanYouWriteIt();
     return 0;
 }
 
