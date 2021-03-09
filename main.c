@@ -1105,6 +1105,20 @@ static void powerOfMath(void)
 }
 
 
+// === HOW CAN YOU WRITE IT ====================================================
+
+/// 2021-03-08
+/// It is possible to write the number 2021 as a difference of two squares:
+/// 2021 = 1011^2 - 1010^2.
+/// Is there any other way to write 20212021 as a difference of two squares?
+/// Note: We are looking for a difference of squares of positive integers.
+/// Squares of negative numbers and non-integers don't count!
+
+static void howCanYouWriteIt(void)
+{
+}
+
+
 // === MAIN ====================================================================
 
 int main(void)
