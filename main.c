@@ -1116,6 +1116,15 @@ static void powerOfMath(void)
 
 static void howCanYouWriteIt(void)
 {
+    static int const v = 2021;
+    for (int x = 1; x < (v + 1); ++x)
+    {
+        for (int y = 1; y < x; ++y)
+        {
+            if ((x*x - y*y) == v)
+                printf("%d * %d = %d\n", x, y, v);
+        }
+    }
 }
 
 
