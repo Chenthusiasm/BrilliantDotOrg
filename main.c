@@ -1152,13 +1152,31 @@ static void primeTilesAndSums(void)
     uint8_t const in[] = { 5, 7, 11, 13, 17, 19, 23 };
     for (int i = 0; i < sizeof(in); ++i)
     {
-        for (int j = i; j < sizeof(in); ++j)
+        for (int j = i + 1; j < sizeof(in); ++j)
         {
-            for (int k = j; k < sizeof(in); ++k)
+            for (int k = j + 1; k < sizeof(in); ++k)
             {
-                int sum = (int)in[i] + (int)in[j] + (int)in[k];
-                if (isPrime(sum))
-                    printf("%d + %d + %d = %d\n", in[i], in[j], in[k], sum);
+                int sum0 = (int)in[i] + (int)in[j] + (int)in[k];
+                if (!isPrime(sum0))
+                    continue;
+                for (int x = 0; x < sizeof(in); ++x)
+                {
+                    if ((x ==i) || (x == j) || (x == k))
+                        continue;
+                    for (int y = x + 1; y < sizeof(in); ++y)
+                    {
+                        if ((y ==i) || (y == j) || (y == k))
+                            continue;
+                        for (int z = y + 1; z < sizeof(in); ++z)
+                        {
+                            if ((z ==i) || (z == j) || (z == k))
+                                continue;
+                            int sum1 = (int)in[x] + (int)in[y] + (int)in[z];
+                            if (sum0 == sum1)
+                                printf("%d + %d + %d = %d ;  %d = %d + %d = %d\n", in[i], in[j], in[k], sum0, in[x], in[y], in[z], sum1);
+                        }
+                    }
+                }
             }
         }
     }
