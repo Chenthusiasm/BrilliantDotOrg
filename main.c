@@ -1140,7 +1140,7 @@ bool isPrime(int n)
             result = false;
             break;
         }
-        if ((i / n) < n)
+        if ((n / i) < i)
             break;
     }
     return result;
@@ -1152,14 +1152,10 @@ static void primeTilesAndSums(void)
     uint8_t const in[] = { 5, 7, 11, 13, 17, 19, 23 };
     for (int i = 0; i < sizeof(in); ++i)
     {
-        for (int j = 0; j < sizeof(in); ++j)
+        for (int j = i; j < sizeof(in); ++j)
         {
-            if (j == i)
-                continue;
-            for (int k = 0; k < sizeof(in); ++k)
+            for (int k = j; k < sizeof(in); ++k)
             {
-                if ((k == i) || (k == j))
-                    continue;
                 int sum = (int)in[i] + (int)in[j] + (int)in[k];
                 if (isPrime(sum))
                     printf("%d + %d + %d = %d\n", in[i], in[j], in[k], sum);
