@@ -1128,11 +1128,52 @@ static void howCanYouWriteIt(void)
 }
 
 
+// === PRIME TILES AND SUMS ====================================================
+
+bool isPrime(int n)
+{
+    bool result = true;
+    for (int i = 2; i <= n/2; ++i)
+    {
+        if ((n % i) == 0)
+        {
+            result = false;
+            break;
+        }
+        if ((i / n) < n)
+            break;
+    }
+    return result;
+}
+
+
+static void primeTilesAndSums(void)
+{
+    uint8_t const in[] = { 5, 7, 11, 13, 17, 19, 23 };
+    for (int i = 0; i < sizeof(in); ++i)
+    {
+        for (int j = 0; j < sizeof(in); ++j)
+        {
+            if (j == i)
+                continue;
+            for (int k = 0; k < sizeof(in); ++k)
+            {
+                if ((k == i) || (k == j))
+                    continue;
+                int sum = (int)in[i] + (int)in[j] + (int)in[k];
+                if (isPrime(sum))
+                    printf("%d + %d + %d = %d\n", in[i], in[j], in[k], sum);
+            }
+        }
+    }
+}
+
+
 // === MAIN ====================================================================
 
 int main(void)
 {
-    howCanYouWriteIt();
+    primeTilesAndSums();
     return 0;
 }
 
