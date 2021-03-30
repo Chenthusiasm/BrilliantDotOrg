@@ -1205,13 +1205,13 @@ double areaInBetweenHelper(int iteration, double length)
     {
         double halfLength = length / 2.0;
         double area = (length * length) - (M_PI * halfLength * halfLength);
-        return area + areaInBetweenHelper(iteration - 1, halfLength);
+        return area + areaInBetweenHelper(iteration - 1, length / sqrt(2.0));
     }
 }
 
 void areaInBetween(void)
 {
-    double area = areaInBetweenHelper(1000, 2.0);
+    double area = areaInBetweenHelper(10000, 2.0);
     printf("AREA IN-BETWEEN: a = %f\r\n", area);
 }
 
