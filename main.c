@@ -4,6 +4,7 @@
 // === INCLUDES ================================================================
 
 #include <limits.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -1180,6 +1181,37 @@ static void primeTilesAndSums(void)
             }
         }
     }
+}
+
+
+// === AREA IN-BETWEEN =========================================================
+
+/// Initially, a square with side length 22 has a circle inscribed, with the
+/// area between the circle's and square's perimeters shaded:\\[1em]
+
+/// Suppose that we recursively inscribe a scaled-down version of this figure in
+/// the innermost circle. The following are the first two iterations of the
+/// procedure:\\[1em]
+
+/// If this procedure is repeated infinitely many times, what is the total
+/// shaded area?
+
+double areaInBetweenHelper(int iteration, double length)
+{
+    if (iteration == 0)
+        return 0;
+    else
+    {
+        double halfLength = length / 2.0;
+        double area = (length * length) - (M_PI * halfLength * halfLength);
+        return area + areaInBetweenHelper(iteration - 1, halfLength);
+    }
+}
+
+void areaInBetween(void)
+{
+    double area = areaInBetweenHelper(10, 2.0);
+    printf("AREA IN-BETWEEN: a = %f\r\n", area);
 }
 
 
