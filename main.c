@@ -1186,6 +1186,7 @@ static void primeTilesAndSums(void)
 
 // === AREA IN-BETWEEN =========================================================
 
+/// 3/30/2021
 /// Initially, a square with side length 22 has a circle inscribed, with the
 /// area between the circle's and square's perimeters shaded:\\[1em]
 
@@ -1210,7 +1211,7 @@ double areaInBetweenHelper(int iteration, double length)
 
 void areaInBetween(void)
 {
-    double area = areaInBetweenHelper(10, 2.0);
+    double area = areaInBetweenHelper(1000, 2.0);
     printf("AREA IN-BETWEEN: a = %f\r\n", area);
 }
 
@@ -1219,7 +1220,7 @@ void areaInBetween(void)
 
 int main(void)
 {
-    primeTilesAndSums();
+    areaInBetween();
     return 0;
 }
 
