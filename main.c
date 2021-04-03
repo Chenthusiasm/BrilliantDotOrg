@@ -29,6 +29,14 @@ static void printArray(int* array, int length)
 }
 
 
+// === HELPER PROBLEMS =========================================================
+
+void cryptogram(char const formula)
+{
+
+}
+
+
 // === PROBLEMS ================================================================
 
 /// 11/14/2020:
@@ -1215,6 +1223,16 @@ void areaInBetween(void)
     printf("AREA IN-BETWEEN: a = %f\r\n", area);
 }
 
+
+// === IN FOR THE WIN ==========================================================
+
+/// 4/2/2021
+/// Each letter represents a different digit. What is WIN?
+///
+///   I N
+/// x I N
+/// -----
+/// W I N
 
 // === MAIN ====================================================================
 
