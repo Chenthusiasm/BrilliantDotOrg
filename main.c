@@ -1234,11 +1234,38 @@ void areaInBetween(void)
 /// -----
 /// W I N
 
+// === STACK OF CIRCLES ========================================================
+
+static double stackOfCirclesHelper(int i, double r)
+{
+    if (i == 0)
+        return 0.0;
+    else
+    {
+        double a = M_PI * r * r;
+        r = r * 0.75;
+        a -= M_PI * r * r;
+        r = r * 0.75;
+        a += stackOfCirclesHelper(i - 1, r);
+        return a;
+    }
+}
+
+
+static void stackOfCircles(void)
+{
+    int i = 1000;
+    double yellow = stackOfCirclesHelper(i, 1.0);
+    double blue = stackOfCirclesHelper(i, 0.75);
+    printf("Stack of Circles [%i]: y = %f, b = %f\r\n", i, yellow, blue);
+}
+
+
 // === MAIN ====================================================================
 
 int main(void)
 {
-    areaInBetween();
+    stackOfCircles();
     return 0;
 }
 
