@@ -1307,14 +1307,55 @@ static void smallestZ(void)
     smallestZFunction const functions[] = { smallestZStepA, smallestZStepB, smallestZStepC };
     int const functionsCount = sizeof(functions) / sizeof(smallestZFunction);
 
-    
+    int x;
+    int y;
+    int z;
+
+    smallestZInit(&x, &y, &z);
+    smallestZPrint(&x, &y, &z);
+
+    smallestZInit(&x, &y, &z);
+    functions[0](&x, &y, &z);
+    functions[1](&x, &y, &z);
+    functions[2](&x, &y, &z);
+    smallestZPrint(&x, &y, &z);
+
+    smallestZInit(&x, &y, &z);
+    functions[0](&x, &y, &z);
+    functions[2](&x, &y, &z);
+    functions[1](&x, &y, &z);
+    smallestZPrint(&x, &y, &z);
+
+    smallestZInit(&x, &y, &z);
+    functions[1](&x, &y, &z);
+    functions[0](&x, &y, &z);
+    functions[2](&x, &y, &z);
+    smallestZPrint(&x, &y, &z);
+
+    smallestZInit(&x, &y, &z);
+    functions[1](&x, &y, &z);
+    functions[2](&x, &y, &z);
+    functions[0](&x, &y, &z);
+    smallestZPrint(&x, &y, &z);
+
+    smallestZInit(&x, &y, &z);
+    functions[2](&x, &y, &z);
+    functions[0](&x, &y, &z);
+    functions[1](&x, &y, &z);
+    smallestZPrint(&x, &y, &z);
+
+    smallestZInit(&x, &y, &z);
+    functions[2](&x, &y, &z);
+    functions[1](&x, &y, &z);
+    functions[0](&x, &y, &z);
+    smallestZPrint(&x, &y, &z);
 }
 
 // === MAIN ====================================================================
 
 int main(void)
 {
-    stackOfCircles();
+    smallestZ();
     return 0;
 }
 
