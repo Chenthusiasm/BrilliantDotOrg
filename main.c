@@ -1261,6 +1261,55 @@ static void stackOfCircles(void)
 }
 
 
+// === THE SMALLEST Z ==========================================================
+
+/// 5/23/2021
+/// Initially:
+///     x = -1
+///     y = 0
+///     z = 1
+/// Instructions:
+///     x = x + y
+///     y = x - y
+///     z = x * y
+
+static void smallestZStepA(int* x, int* y, int* z)
+{
+    *x = *x + *y;
+}
+
+static void smallestZStepB(int* x, int* y, int* z)
+{
+    *y = *x - *y;
+}
+
+static void smallestZStepC(int* x, int* y, int* z)
+{
+    *z = *x * *y;
+}
+
+static void smallestZInit(int* x, int* y, int* z)
+{
+    *x = -1;
+    *y = 0;
+    *z = 1;
+}
+
+static void smallestZPrint(int const* x, int const* y, int const* z)
+{
+    printf("x = %d  y = %d  z = %d\r\n", *x, *y, *z);
+}
+
+typedef void (*smallestZFunction)(int*, int*, int*);
+
+static void smallestZ(void)
+{
+    smallestZFunction const functions[] = { smallestZStepA, smallestZStepB, smallestZStepC };
+    int const functionsCount = sizeof(functions) / sizeof(smallestZFunction);
+
+    
+}
+
 // === MAIN ====================================================================
 
 int main(void)
